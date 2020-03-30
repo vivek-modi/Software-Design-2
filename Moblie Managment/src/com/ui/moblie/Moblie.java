@@ -98,7 +98,6 @@ public class Moblie {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				addMoblie.insertMoblie(textField.getText(), Integer.parseInt(textField_1.getText()));
-				System.out.println(addMoblie.getData().toString());
 			}
 		});
 
