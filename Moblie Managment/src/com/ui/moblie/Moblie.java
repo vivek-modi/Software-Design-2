@@ -6,20 +6,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
-
-import com.data.MoblieGenric;
-import com.data.MoblieQueue;
 import com.ui.MainFrame;
 import com.utils.AddMoblie;
-import com.utils.MoblieComparator;
 import com.utils.MoreFunctions;
-
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.PriorityQueue;
 import java.awt.event.ActionEvent;
 
 public class Moblie {
@@ -86,19 +77,9 @@ public class Moblie {
 		textField_1.setBounds(293, 196, 86, 20);
 		frame.getContentPane().add(textField_1);
 
-
 		JButton btnNewButton = new JButton("Add ");
 		btnNewButton.setBounds(196, 282, 89, 23);
 		frame.getContentPane().add(btnNewButton);
-
-//		PriorityQueue<MoblieQueue> pQueue = new PriorityQueue<MoblieQueue>(new MoblieComparator());
-//
-//		ArrayList<MoblieQueue> arrayList = new ArrayList<MoblieQueue>();
-
-		JButton btnSearch = new JButton("Search");
-		
-		btnSearch.setBounds(28, 282, 89, 23);
-		frame.getContentPane().add(btnSearch);
 
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
@@ -120,39 +101,6 @@ public class Moblie {
 				System.out.println(addMoblie.getData().toString());
 			}
 		});
-		
-		btnSearch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				functions.SearchItem(textField.getText());
 
-//				if (moblieGenric.DisplayMoblie().containsKey(textField.getText())) {
-//				
-//					for (MoblieQueue moblieQueue : arrayList) {
-//						
-//						if (moblieQueue.getName().contains(textField.getText())) {
-//							moblieQueue.setCount(moblieQueue.getCount() + 1);
-//							check = false;
-//						}
-//					}
-//					if (check) {
-//						arrayList.add(new MoblieQueue(textField.getText(), 1));
-//					}
-//					check = true;
-//				} else {
-//					System.out.println("No");
-//				}
-//
-//				for (MoblieQueue moblieQueue : arrayList) {
-//					pQueue.add(moblieQueue);
-//				}
-//
-//				while (pQueue.size() > 0) {
-//					MoblieQueue m = pQueue.poll();
-//					System.out.println(m.getName() + " " + m.getCount());
-//				}
-
-			}
-		});
 	}
 }
