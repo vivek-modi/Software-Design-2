@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+
+import com.message.DialogMessage;
 import com.ui.MainFrame;
 import com.utils.AddMoblie;
 import com.utils.MoreFunctions;
@@ -97,7 +99,15 @@ public class Moblie {
 
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				addMoblie.insertMoblie(textField.getText(), Integer.parseInt(textField_1.getText()));
+
+				if (textField.getText().equals("") || textField_1.getText().equals("")) {
+					DialogMessage.showWarningDialog("Some Fields are missing");
+				} else {
+					addMoblie.insertMoblie(textField.getText(), Integer.parseInt(textField_1.getText()));
+					DialogMessage.showInfoDialog("Moblie Added SuccessFully");
+					textField.setText("");
+					textField_1.setText("");
+				}
 			}
 		});
 

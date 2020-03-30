@@ -1,4 +1,4 @@
-package com.ui.employee;
+package com.ui.customer;
 
 import java.awt.EventQueue;
 
@@ -7,18 +7,26 @@ import javax.swing.JTextField;
 
 import com.ui.MainFrame;
 import com.utils.AddEmployee;
+import com.utils.AddMoblie;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Set;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
-public class EmployeeFrame {
+public class CustomerFrame {
 
 	public JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
 	private JTextField textField_3;
 
 	/**
@@ -28,7 +36,7 @@ public class EmployeeFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EmployeeFrame window = new EmployeeFrame();
+					CustomerFrame window = new CustomerFrame();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,13 +48,14 @@ public class EmployeeFrame {
 	/**
 	 * Create the application.
 	 */
-	public EmployeeFrame() {
+	public CustomerFrame() {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@SuppressWarnings("unchecked")
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 560, 432);
@@ -54,7 +63,7 @@ public class EmployeeFrame {
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
 
-		JLabel lblNewLabel = new JLabel("Add Employee");
+		JLabel lblNewLabel = new JLabel("Add Customer");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(204, 39, 136, 28);
 		frame.getContentPane().add(lblNewLabel);
@@ -69,12 +78,12 @@ public class EmployeeFrame {
 		lblNewLabel_1_1.setBounds(127, 181, 46, 14);
 		frame.getContentPane().add(lblNewLabel_1_1);
 
-		JLabel lblNewLabel_1_1_1 = new JLabel("Age");
+		JLabel lblNewLabel_1_1_1 = new JLabel("Model name");
 		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_1_1_1.setBounds(131, 224, 57, 22);
+		lblNewLabel_1_1_1.setBounds(131, 224, 114, 22);
 		frame.getContentPane().add(lblNewLabel_1_1_1);
 
-		JLabel lblNewLabel_1_1_1_1 = new JLabel("Salary");
+		JLabel lblNewLabel_1_1_1_1 = new JLabel("Price");
 		lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_1_1_1_1.setBounds(131, 274, 57, 22);
 		frame.getContentPane().add(lblNewLabel_1_1_1_1);
@@ -89,11 +98,6 @@ public class EmployeeFrame {
 		textField_1.setBounds(337, 181, 86, 20);
 		frame.getContentPane().add(textField_1);
 
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(337, 228, 86, 20);
-		frame.getContentPane().add(textField_2);
-
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
 		textField_3.setBounds(337, 278, 86, 20);
@@ -107,11 +111,42 @@ public class EmployeeFrame {
 		btnBack.setBounds(10, 11, 71, 23);
 		frame.getContentPane().add(btnBack);
 
+		@SuppressWarnings("rawtypes")
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(337, 228, 86, 20);
+		frame.getContentPane().add(comboBox);
+
+		AddMoblie addMoblie = AddMoblie.getInstance();
+		ArrayList<String> ls = new ArrayList<String>();
+		Set<String> keys = addMoblie.getData().keySet();
+		for (String key : keys) {
+			ls.add(key);
+		}
+
+		comboBox.setModel(new DefaultComboBoxModel<String>(ls.toArray(new String[0])));
+
+		comboBox.addItemListener(new ItemListener() {
+			@SuppressWarnings("rawtypes")
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				JComboBox comboBox = (JComboBox) e.getSource();
+				Object item = e.getItem();
+
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					textField_3.setText("" + (addMoblie.getData().get(comboBox.getSelectedItem().toString())));
+				}
+
+			}
+		});
+
 		AddEmployee addEmployee = AddEmployee.getInstance();
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				addEmployee.addEmployeData(Integer.parseInt(textField.getText()), textField_1.getText(),
-						Integer.parseInt(textField_2.getText()), Integer.parseInt(textField_3.getText()));
+						comboBox.getSelectedItem().toString(), Integer.parseInt(textField_3.getText()));
+
+				textField.setText("");
+				textField_1.setText("");
 			}
 		});
 

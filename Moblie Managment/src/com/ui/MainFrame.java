@@ -12,11 +12,13 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import com.ui.employee.EmployeeFrame;
-import com.ui.employee.SearchEmployeeFrame;
+import com.ui.customer.CustomerFrame;
+import com.ui.customer.SearchCustomerFrame;
 import com.ui.moblie.Moblie;
 import com.ui.moblie.SearchMoblieFrame;
 import com.ui.vendor.Vendor;
+import javax.swing.JLabel;
+import javax.swing.JButton;
 
 public class MainFrame {
 
@@ -50,28 +52,28 @@ public class MainFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 757, 481);
+		frame.setBounds(100, 100, 482, 338);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
 
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 757, 26);
-		frame.add(menuBar);
+		frame.getContentPane().add(menuBar);
 
-		JMenu mnEmployees = new JMenu("Employees");
+		JMenu mnEmployees = new JMenu("Customer");
 		mnEmployees.setForeground(SystemColor.desktop);
 		mnEmployees.setFont(new Font("Arial Black", Font.BOLD, 16));
 		mnEmployees.setBackground(Color.LIGHT_GRAY);
 		menuBar.add(mnEmployees);
 
-		JMenuItem menu_Add_Employee = new JMenuItem("Add Employee");
+		JMenuItem menu_Add_Employee = new JMenuItem("Add Customer");
 		menu_Add_Employee.setBackground(SystemColor.activeCaption);
 		menu_Add_Employee.setForeground(SystemColor.desktop);
 		menu_Add_Employee.setFont(new Font("Arial", Font.BOLD, 14));
 		mnEmployees.add(menu_Add_Employee);
 
-		JMenuItem mntmSearchEmployee = new JMenuItem("Search Employee");
+		JMenuItem mntmSearchEmployee = new JMenuItem("Search Customer");
 		mntmSearchEmployee.setForeground(SystemColor.desktop);
 		mntmSearchEmployee.setFont(new Font("Arial", Font.BOLD, 14));
 		mntmSearchEmployee.setBackground(SystemColor.activeCaption);
@@ -107,10 +109,29 @@ public class MainFrame {
 		mntmAddCustomer.setBackground(SystemColor.activeCaption);
 		mnCustomers.add(mntmAddCustomer);
 
+		JLabel lblNewLabel = new JLabel("Welcome to Moblie Store");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel.setBounds(118, 71, 214, 14);
+		frame.getContentPane().add(lblNewLabel);
+
+		JButton btnNewButton = new JButton("Close");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		btnNewButton.setBounds(178, 236, 89, 23);
+		frame.getContentPane().add(btnNewButton);
+
+		JLabel lblFirstAddMoblie = new JLabel("Add Moblie First");
+		lblFirstAddMoblie.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblFirstAddMoblie.setBounds(153, 131, 214, 14);
+		frame.getContentPane().add(lblFirstAddMoblie);
+
 		menu_Add_Employee.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new EmployeeFrame().frame.setVisible(true);
+				new CustomerFrame().frame.setVisible(true);
 				frame.dispose();
 			}
 		});
@@ -118,7 +139,7 @@ public class MainFrame {
 		mntmSearchEmployee.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new SearchEmployeeFrame().frame.setVisible(true);
+				new SearchCustomerFrame().frame.setVisible(true);
 				frame.dispose();
 			}
 		});
@@ -148,5 +169,4 @@ public class MainFrame {
 		});
 
 	}
-
 }

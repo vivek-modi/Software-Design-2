@@ -2,12 +2,12 @@ package com.data;
 
 public class EmployeeNode {
 
-	protected int key, age, salary;
-	protected String name;
+	protected int key, salary;
+	protected String name,model;
 
-	public EmployeeNode(int key, String name, int age, int salary) {
+	public EmployeeNode(int key, String name, String model, int salary) {
 		this.key = key;
-		this.age = age;
+		this.model = model;
 		this.salary = salary;
 		this.name = name;
 	}
@@ -16,8 +16,8 @@ public class EmployeeNode {
 		return key;
 	}
 
-	public int getAge() {
-		return age;
+	public String getModel() {
+		return model;
 	}
 
 	public int getSalary() {

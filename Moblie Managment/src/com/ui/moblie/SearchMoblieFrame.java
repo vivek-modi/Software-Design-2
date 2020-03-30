@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 
+import com.message.DialogMessage;
 import com.ui.MainFrame;
 import com.utils.AddMoblie;
 import com.utils.MoreFunctions;
@@ -94,7 +95,13 @@ public class SearchMoblieFrame {
 
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblNewLabel_2.setText(functions.SearchItem(textField.getText()));
+
+				if (textField.getText().equals("")) {
+					DialogMessage.showWarningDialog("Field is missing");
+				} else {
+					lblNewLabel_2.setText(functions.SearchItem(textField.getText()));
+				}
+
 			}
 		});
 	}

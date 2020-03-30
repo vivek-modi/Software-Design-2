@@ -1,4 +1,4 @@
-package com.ui.employee;
+package com.ui.customer;
 
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -14,7 +14,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class SearchEmployeeFrame {
+public class SearchCustomerFrame {
 
 	public JFrame frame;
 	private JTextField textField;
@@ -26,7 +26,7 @@ public class SearchEmployeeFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SearchEmployeeFrame window = new SearchEmployeeFrame();
+					SearchCustomerFrame window = new SearchCustomerFrame();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +38,7 @@ public class SearchEmployeeFrame {
 	/**
 	 * Create the application.
 	 */
-	public SearchEmployeeFrame() {
+	public SearchCustomerFrame() {
 		initialize();
 	}
 

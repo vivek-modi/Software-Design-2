@@ -16,13 +16,13 @@ public class AddEmployee {
 		EmployeeNodeValue = new TreeSet<EmployeeNode>(nameComparator);
 	}
 
-	public void addEmployeData(int key, String name, int age, int salary) {
-		EmployeeNodeValue.add(new EmployeeNode(key, name, age, salary));
+	public void addEmployeData(int key, String name, String model, int salary) {
+		EmployeeNodeValue.add(new EmployeeNode(key, name, model, salary));
 	}
 
 	public void display() {
 		EmployeeNodeValue.forEach(employee -> System.out.println("Key: " + employee.getKey() + " Name: "
-				+ employee.getName() + " Age: " + employee.getAge() + " Salary: " + employee.getSalary()));
+				+ employee.getName() + " Age: " + employee.getModel() + " Salary: " + employee.getSalary()));
 	}
 
 	public void SearchEmployee(String name) {
@@ -30,7 +30,7 @@ public class AddEmployee {
 		for (EmployeeNode employeeNode : EmployeeNodeValue) {
 			if (employeeNode.getName().contains(name)) {
 				System.out.println("Key: " + employeeNode.getKey() + " Name: " + employeeNode.getName() + " Age: "
-						+ employeeNode.getAge() + " Salary: " + employeeNode.getSalary());
+						+ employeeNode.getModel() + " Salary: " + employeeNode.getSalary());
 				nofound = true;
 				break;
 			} else {
