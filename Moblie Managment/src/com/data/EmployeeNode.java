@@ -11,7 +11,7 @@ public class EmployeeNode {
 		this.salary = salary;
 		this.name = name;
 	}
-	
+
 	public int getKey() {
 		return key;
 	}
