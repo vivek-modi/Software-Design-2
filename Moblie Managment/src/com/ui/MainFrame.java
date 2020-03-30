@@ -14,6 +14,8 @@ import javax.swing.JMenuItem;
 
 import com.ui.employee.EmployeeFrame;
 import com.ui.employee.SearchEmployeeFrame;
+import com.ui.moblie.Moblie;
+import com.ui.moblie.SearchMoblieFrame;
 
 public class MainFrame {
 
@@ -155,10 +157,25 @@ public class MainFrame {
 		});
 
 		mntmSearchEmployee.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new SearchEmployeeFrame().frame.setVisible(true);
+				frame.dispose();
+			}
+		});
+
+		menu_Add_Products.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Moblie().frame.setVisible(true);
+				frame.dispose();
+			}
+		});
+		
+		mntmSearchProducts.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new SearchMoblieFrame().frame.setVisible(true);
 				frame.dispose();
 			}
 		});
