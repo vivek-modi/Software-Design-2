@@ -145,7 +145,7 @@ public class MainFrame {
 		menu_Add_Employee.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Employee().frame.setVisible(true);
+				new EmployeeFrame().frame.setVisible(true);
 				frame.dispose();
 			}
 		});
