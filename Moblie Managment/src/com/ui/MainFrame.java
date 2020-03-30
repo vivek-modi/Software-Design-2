@@ -12,6 +12,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import com.ui.employee.EmployeeFrame;
+import com.ui.employee.SearchEmployeeFrame;
+
 public class MainFrame {
 
 	public JFrame frame;
@@ -70,6 +73,7 @@ public class MainFrame {
 		mnEmployees.setFont(new Font("Arial Black", Font.BOLD, 16));
 		mnEmployees.setBackground(Color.LIGHT_GRAY);
 		menuBar.add(mnEmployees);
+
 		JMenuItem menu_Add_Employee = new JMenuItem("Add Employee");
 		menu_Add_Employee.setBackground(SystemColor.activeCaption);
 		menu_Add_Employee.setForeground(SystemColor.desktop);
@@ -149,6 +153,16 @@ public class MainFrame {
 				frame.dispose();
 			}
 		});
+
+		mntmSearchEmployee.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new SearchEmployeeFrame().frame.setVisible(true);
+				frame.dispose();
+			}
+		});
+
 	}
 
 }

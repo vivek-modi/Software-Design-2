@@ -1,9 +1,11 @@
-package com.ui;
+package com.ui.employee;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+
+import com.ui.MainFrame;
 import com.utils.AddEmployee;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -50,6 +52,7 @@ public class EmployeeFrame {
 		frame.setBounds(100, 100, 560, 432);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
 
 		JLabel lblNewLabel = new JLabel("Add Employee");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -100,19 +103,11 @@ public class EmployeeFrame {
 		btnNewButton.setBounds(221, 347, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 
-		JButton btnShow = new JButton("Show");
-
-		btnShow.setBounds(393, 347, 89, 23);
-		frame.getContentPane().add(btnShow);
-
-		JButton btnSearch = new JButton("Search");
-
-		btnSearch.setBounds(29, 347, 89, 23);
-		frame.getContentPane().add(btnSearch);
-		frame.setLocationRelativeTo(null);
+		JButton btnBack = new JButton("Back");
+		btnBack.setBounds(10, 11, 71, 23);
+		frame.getContentPane().add(btnBack);
 
 		AddEmployee addEmployee = AddEmployee.getInstance();
-
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				addEmployee.addEmployeData(Integer.parseInt(textField.getText()), textField_1.getText(),
@@ -120,17 +115,11 @@ public class EmployeeFrame {
 			}
 		});
 
-		btnShow.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				addEmployee.display();
-			}
-		});
-
-		btnSearch.addActionListener(new ActionListener() {
+		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				addEmployee.SearchEmployee(textField_1.getText());
+				new MainFrame().frame.setVisible(true);
+				frame.dispose();
 			}
 		});
-
 	}
 }

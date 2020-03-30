@@ -1,4 +1,4 @@
-package com.utils;
+package com.data;
 
 public class EmployeeNode {
 

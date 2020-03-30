@@ -4,6 +4,8 @@ import java.util.Comparator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import com.data.EmployeeNode;
+
 public class AddEmployee {
 
 	public static AddEmployee single;
@@ -27,7 +29,8 @@ public class AddEmployee {
 		boolean nofound = true;
 		for (EmployeeNode employeeNode : EmployeeNodeValue) {
 			if (employeeNode.getName().contains(name)) {
-				System.out.println(employeeNode.getAge());
+				System.out.println("Key: " + employeeNode.getKey() + " Name: " + employeeNode.getName() + " Age: "
+						+ employeeNode.getAge() + " Salary: " + employeeNode.getSalary());
 				nofound = true;
 				break;
 			} else {
