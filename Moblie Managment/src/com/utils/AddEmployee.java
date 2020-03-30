@@ -1,7 +1,6 @@
 package com.utils;
 
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -22,18 +21,20 @@ public class AddEmployee {
 	public void display() {
 		EmployeeNodeValue.forEach(employee -> System.out.println("Key: " + employee.getKey() + " Name: "
 				+ employee.getName() + " Age: " + employee.getAge() + " Salary: " + employee.getSalary()));
-
 	}
 
 	public void SearchEmployee(String name) {
+		boolean nofound = true;
 		for (EmployeeNode employeeNode : EmployeeNodeValue) {
 			if (employeeNode.getName().contains(name)) {
 				System.out.println(employeeNode.getAge());
+				nofound = true;
 				break;
 			} else {
-				System.out.println("NO FOUND");
+				nofound = false;
 			}
 		}
+		System.out.println((nofound) ? "" : "NO FOUND");
 	}
 
 	public static AddEmployee getInstance() {

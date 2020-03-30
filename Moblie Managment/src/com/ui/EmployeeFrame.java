@@ -4,18 +4,11 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
-
 import com.utils.AddEmployee;
-import com.utils.EmployeeNode;
-import com.utils.The_Comparator;
-
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
-import java.util.SortedSet;
-import java.util.TreeSet;
 import java.awt.event.ActionEvent;
 
 public class EmployeeFrame {
