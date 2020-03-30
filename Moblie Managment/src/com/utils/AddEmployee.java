@@ -1,5 +1,6 @@
 package com.utils;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -10,7 +11,8 @@ public class AddEmployee {
 	private SortedSet<EmployeeNode> EmployeeNodeValue;
 
 	public AddEmployee() {
-		EmployeeNodeValue = new TreeSet<EmployeeNode>(new The_Comparator());
+		Comparator<EmployeeNode> nameComparator = Comparator.comparing(EmployeeNode::getName);
+		EmployeeNodeValue = new TreeSet<EmployeeNode>(nameComparator);
 	}
 
 	public void addEmployeData(int key, String name, int age, int salary) {
@@ -18,10 +20,9 @@ public class AddEmployee {
 	}
 
 	public void display() {
-		for (EmployeeNode employeeNode : EmployeeNodeValue) {
-			System.out.println("Key: " + employeeNode.getKey() + " Name: " + employeeNode.getName() + " Age: "
-					+ employeeNode.getAge() + " Salary: " + employeeNode.getSalary());
-		}
+		EmployeeNodeValue.forEach(employee -> System.out.println("Key: " + employee.getKey() + " Name: "
+				+ employee.getName() + " Age: " + employee.getAge() + " Salary: " + employee.getSalary()));
+
 	}
 
 	public void SearchEmployee(String name) {
