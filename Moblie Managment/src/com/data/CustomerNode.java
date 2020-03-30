@@ -1,11 +1,11 @@
 package com.data;
 
-public class EmployeeNode {
+public class CustomerNode {
 
 	protected int key, salary;
 	protected String name,model;
 
-	public EmployeeNode(int key, String name, String model, int salary) {
+	public CustomerNode(int key, String name, String model, int salary) {
 		this.key = key;
 		this.model = model;
 		this.salary = salary;

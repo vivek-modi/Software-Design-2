@@ -7,7 +7,7 @@ import javax.swing.JTextField;
 
 import com.message.DialogMessage;
 import com.ui.MainFrame;
-import com.utils.AddEmployee;
+import com.utils.AddCustomer;
 import com.utils.AddMoblie;
 
 import javax.swing.JLabel;
@@ -140,7 +140,7 @@ public class CustomerFrame {
 			}
 		});
 
-		AddEmployee addEmployee = AddEmployee.getInstance();
+		AddCustomer addEmployee = AddCustomer.getInstance();
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -148,8 +148,9 @@ public class CustomerFrame {
 						|| textField_3.getText().equals("")) {
 					DialogMessage.showWarningDialog("Some Fields are missing");
 				} else {
-					addEmployee.addEmployeData(Integer.parseInt(textField.getText()), textField_1.getText(),
+					addEmployee.addCustomerData(Integer.parseInt(textField.getText()), textField_1.getText(),
 							comboBox.getSelectedItem().toString(), Integer.parseInt(textField_3.getText()));
+					DialogMessage.showInfoDialog("Customer Added SuccessFully");
 					textField.setText("");
 					textField_1.setText("");
 					textField_3.setText("");

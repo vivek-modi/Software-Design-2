@@ -8,12 +8,14 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import com.ui.MainFrame;
-import com.utils.AddEmployee;
+import com.utils.AddCustomer;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public class SearchCustomerFrame {
 
@@ -48,48 +50,59 @@ public class SearchCustomerFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 601, 450);
+		frame.setBounds(100, 100, 444, 355);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
 
-		JLabel lblNewLabel = new JLabel("Search Bill");
+		JLabel lblNewLabel = new JLabel("Search & Print Bill");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(251, 29, 177, 28);
+		lblNewLabel.setBounds(134, 31, 177, 28);
 		frame.getContentPane().add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("Name");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_1.setBounds(94, 95, 57, 22);
+		lblNewLabel_1.setBounds(87, 122, 57, 22);
 		frame.getContentPane().add(lblNewLabel_1);
 
 		textField = new JTextField();
-		textField.setBounds(315, 95, 113, 20);
+		textField.setBounds(257, 126, 113, 20);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 
-		AddEmployee addEmployee = AddEmployee.getInstance();
+		AddCustomer addEmployee = AddCustomer.getInstance();
 
 		JButton btnNewButton = new JButton("Search");
 
-		btnNewButton.setBounds(133, 334, 89, 23);
+		btnNewButton.setBounds(43, 227, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("Back");
-		btnNewButton_1.setBounds(10, 11, 67, 23);
+		btnNewButton_1.setBounds(302, 227, 83, 23);
 		frame.getContentPane().add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.setBounds(346, 334, 89, 23);
+
+		JButton btnNewButton_2 = new JButton("Print");
+
+		btnNewButton_2.setBounds(173, 227, 89, 23);
 		frame.getContentPane().add(btnNewButton_2);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(79, 144, 476, 179);
-		frame.getContentPane().add(panel);
+
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setBounds(10, 280, 134, 14);
+		frame.getContentPane().add(lblNewLabel_2);
+
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					addEmployee.printbill(textField.getText());
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				addEmployee.SearchEmployee(textField.getText());
+				lblNewLabel_2.setText(addEmployee.SearchCustomer(textField.getText()));
 			}
 		});
 
