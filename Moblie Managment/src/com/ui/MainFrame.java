@@ -16,6 +16,7 @@ import com.ui.employee.EmployeeFrame;
 import com.ui.employee.SearchEmployeeFrame;
 import com.ui.moblie.Moblie;
 import com.ui.moblie.SearchMoblieFrame;
+import com.ui.vendor.Vendor;
 
 public class MainFrame {
 
@@ -57,18 +58,6 @@ public class MainFrame {
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 757, 26);
 		frame.add(menuBar);
-
-		JMenu mnFile = new JMenu("Options");
-		mnFile.setBackground(new Color(192, 192, 192));
-		mnFile.setForeground(SystemColor.desktop);
-		mnFile.setFont(new Font("Arial Black", Font.BOLD, 16));
-		menuBar.add(mnFile);
-
-		JMenuItem mntmLogout = new JMenuItem("Logout");
-		mntmLogout.setForeground(SystemColor.desktop);
-		mntmLogout.setFont(new Font("Arial", Font.BOLD, 14));
-		mntmLogout.setBackground(SystemColor.activeCaption);
-		mnFile.add(mntmLogout);
 
 		JMenu mnEmployees = new JMenu("Employees");
 		mnEmployees.setForeground(SystemColor.desktop);
@@ -118,36 +107,6 @@ public class MainFrame {
 		mntmAddCustomer.setBackground(SystemColor.activeCaption);
 		mnCustomers.add(mntmAddCustomer);
 
-		JMenuItem mntmSearchCustomer = new JMenuItem("Search Vendor");
-		mntmSearchCustomer.setForeground(SystemColor.desktop);
-		mntmSearchCustomer.setFont(new Font("Arial", Font.BOLD, 14));
-		mntmSearchCustomer.setBackground(SystemColor.activeCaption);
-		mnCustomers.add(mntmSearchCustomer);
-
-		JMenu mnReports = new JMenu("Reports");
-		mnReports.setForeground(SystemColor.desktop);
-		mnReports.setFont(new Font("Arial Black", Font.BOLD, 16));
-		mnReports.setBackground(Color.LIGHT_GRAY);
-		menuBar.add(mnReports);
-
-		JMenuItem mntmProductsReport = new JMenuItem("Mobile Report");
-		mntmProductsReport.setForeground(SystemColor.desktop);
-		mntmProductsReport.setFont(new Font("Arial", Font.BOLD, 14));
-		mntmProductsReport.setBackground(SystemColor.activeCaption);
-		mnReports.add(mntmProductsReport);
-
-		JMenuItem mntmCustomerReport = new JMenuItem("Vendor Report");
-		mntmCustomerReport.setForeground(SystemColor.desktop);
-		mntmCustomerReport.setFont(new Font("Arial", Font.BOLD, 14));
-		mntmCustomerReport.setBackground(SystemColor.activeCaption);
-		mnReports.add(mntmCustomerReport);
-
-		JMenuItem mntmEmployeereport = new JMenuItem("Employee Report");
-		mntmEmployeereport.setForeground(SystemColor.desktop);
-		mntmEmployeereport.setFont(new Font("Arial", Font.BOLD, 14));
-		mntmEmployeereport.setBackground(SystemColor.activeCaption);
-		mnReports.add(mntmEmployeereport);
-
 		menu_Add_Employee.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -171,11 +130,19 @@ public class MainFrame {
 				frame.dispose();
 			}
 		});
-		
+
 		mntmSearchProducts.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new SearchMoblieFrame().frame.setVisible(true);
+				frame.dispose();
+			}
+		});
+
+		mntmAddCustomer.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Vendor().frame.setVisible(true);
 				frame.dispose();
 			}
 		});
