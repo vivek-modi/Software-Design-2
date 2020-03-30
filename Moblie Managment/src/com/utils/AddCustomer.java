@@ -31,21 +31,18 @@ public class AddCustomer {
 	}
 
 	public String SearchCustomer(String name) {
-		boolean nofound = true;
 		for (CustomerNode employeeNode : EmployeeNodeValue) {
+
 			if (employeeNode.getName().contains(name)) {
 				DialogMessage.showInfoDialog("Id: " + employeeNode.getKey() + " Name: " + employeeNode.getName()
 						+ " Model: " + employeeNode.getModel() + " Price: " + employeeNode.getSalary());
-				nofound = true;
-				break;
-			} else {
-				nofound = false;
+				return "Customer Found";
 			}
 		}
-		return ((nofound) ? "Customer Found" : "NO FOUND");
+		return "No Customer Found";
 	}
 
-	public void printbill(String name) throws IOException {
+	public String printbill(String name) throws IOException {
 		BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(new File("bill.txt")));
 		bufferedWriter.write("**Bill**");
 		for (CustomerNode employeeNode : EmployeeNodeValue) {
@@ -53,9 +50,10 @@ public class AddCustomer {
 				bufferedWriter.write("\nId: " + employeeNode.getKey() + "\nName: " + employeeNode.getName()
 						+ "\nModel: " + employeeNode.getModel() + "\nPrice: " + employeeNode.getSalary());
 				bufferedWriter.close();
+				return "Import Succesfully";
 			}
-
 		}
+		return "Error with importing user";
 	}
 
 	public static AddCustomer getInstance() {

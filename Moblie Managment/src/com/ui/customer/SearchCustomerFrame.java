@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import com.message.DialogMessage;
 import com.ui.MainFrame;
 import com.utils.AddCustomer;
 
@@ -93,7 +94,11 @@ public class SearchCustomerFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					addEmployee.printbill(textField.getText());
+					if (textField.getText().equals("")) {
+						DialogMessage.showWarningDialog("Field is missing");
+					} else {
+						DialogMessage.showInfoDialog(addEmployee.printbill(textField.getText()));
+					}
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -102,7 +107,11 @@ public class SearchCustomerFrame {
 
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblNewLabel_2.setText(addEmployee.SearchCustomer(textField.getText()));
+				if (textField.getText().equals("")) {
+					DialogMessage.showWarningDialog("Field is missing");
+				} else {
+					lblNewLabel_2.setText(addEmployee.SearchCustomer(textField.getText()));
+				}
 			}
 		});
 
