@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
+import com.message.DialogMessage;
 import com.ui.MainFrame;
 import com.utils.AddEmployee;
 import com.utils.AddMoblie;
@@ -142,11 +143,17 @@ public class CustomerFrame {
 		AddEmployee addEmployee = AddEmployee.getInstance();
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				addEmployee.addEmployeData(Integer.parseInt(textField.getText()), textField_1.getText(),
-						comboBox.getSelectedItem().toString(), Integer.parseInt(textField_3.getText()));
 
-				textField.setText("");
-				textField_1.setText("");
+				if (textField.getText().equals("") || textField_1.getText().equals("")
+						|| textField_3.getText().equals("")) {
+					DialogMessage.showWarningDialog("Some Fields are missing");
+				} else {
+					addEmployee.addEmployeData(Integer.parseInt(textField.getText()), textField_1.getText(),
+							comboBox.getSelectedItem().toString(), Integer.parseInt(textField_3.getText()));
+					textField.setText("");
+					textField_1.setText("");
+					textField_3.setText("");
+				}
 			}
 		});
 
