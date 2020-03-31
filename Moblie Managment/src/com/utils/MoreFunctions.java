@@ -49,6 +49,7 @@ public class MoreFunctions implements Visitor {
 
 		while (pQueue.size() > 0) {
 			MoblieQueue m = pQueue.poll();
+			System.out.println(m.getName() + "  " + m.getCount());
 		}
 	}
 
