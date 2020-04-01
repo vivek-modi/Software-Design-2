@@ -145,7 +145,7 @@ public class Vendor {
 
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VendorNode node = binarySearch.search(Integer.parseInt(textField.getText()));
+				VendorNode node = binarySearch.search(Integer.parseInt(textField_3.getText()));
 				if (node != null)
 					lblNewLabel_2.setText("Name : " + node.getName() + "  Age : " + node.getPassword());
 				else
